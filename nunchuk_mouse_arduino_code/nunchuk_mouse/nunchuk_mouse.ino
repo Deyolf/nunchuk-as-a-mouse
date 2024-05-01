@@ -11,6 +11,7 @@ ArduinoNunchuk nunchuk = ArduinoNunchuk();
 //Dichiariamo le variabili
 int c, z, xa, ya, xc, yc, zc;
 int xmax=0, xmin=1000, ymax=0, ymin=1000;
+int xmove,ymove;
 
 void setup(){
   Serial.begin(9600);
@@ -20,32 +21,6 @@ void setup(){
 void loop(){
   //Legge i dati dal Nunchuk
   nunchuk.update();
-  
-  //DEBUG SERIALE
-  //Valori del joystick
-  /*Serial.print("Xanalog:  ");
-  Serial.print(nunchuk.analogX, DEC);
-  Serial.print(' ');
-  Serial.print("Yanalog:  ");
-  Serial.print(nunchuk.analogY, DEC);
-  Serial.print(' ');
-  //Valori accellerometro
-  Serial.print("Xaccel:  ");
-  Serial.print(nunchuk.accelX, DEC);
-  Serial.print(' ');
-  Serial.print("Yaccel:  ");
-  Serial.print(nunchuk.accelY, DEC);
-  Serial.print(' ');
-  Serial.print("Zaccel:  ");
-  Serial.print(nunchuk.accelZ, DEC);
-  
-  Serial.println(' ');
-  Serial.print("Z:  ");
-  Serial.print(nunchuk.zButton, DEC);
-  
-  Serial.print(' ');
-  Serial.print("C:  ");
-  Serial.println(nunchuk.cButton);*/
 
   xa=nunchuk.analogX;
   ya=nunchuk.analogY;
@@ -54,8 +29,6 @@ void loop(){
   zc=nunchuk.accelZ;
   z=nunchuk.zButton;
   c=nunchuk.cButton;
-
-  int xmove,ymove;
 
   xmove=map(xa,30,230,-2,3);
   ymove=map(ya,30,230,-2,3);
