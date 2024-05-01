@@ -1,5 +1,5 @@
 import pyautogui as pag
-import random
+import serial
 import time
 
 pag.move(-50,0)
