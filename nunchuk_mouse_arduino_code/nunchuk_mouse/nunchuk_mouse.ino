@@ -24,20 +24,22 @@ dataNunchuk packet;
 void setup(){
   Serial.begin(9600);
   nunchuk.init();
+  delay(2000);
 }
 
 void loop(){
   //Legge i dati dal Nunchuk
   nunchuk.update();
 
-  packet.Xanalog=nunchuk.analogX;
-  packet.Yanalog=nunchuk.analogY;
-  packet.Xaccel=nunchuk.accelX;
-  packet.Yaccel=nunchuk.accelY;
-  packet.Zaccel=nunchuk.accelZ;
-  packet.Zbutton=nunchuk.zButton;
-  packet.Cbutton=nunchuk.cButton;
 
-  size_t x = Serial.write((byte*) &packet, sizeof(packet));
+  packet.Xanalog=Serial.println(nunchuk.analogX);
+  packet.Yanalog=Serial.println(nunchuk.analogY);
+  //packet.Xaccel=Serial.println(nunchuk.accelX);
+  //packet.Yaccel=Serial.println(nunchuk.accelY);
+  //packet.Zaccel=Serial.println(nunchuk.accelZ);
+  packet.Zbutton=Serial.println(nunchuk.zButton);
+  packet.Cbutton=Serial.println(nunchuk.cButton);
+
+  //size_t x = Serial.print(packet);
   Serial.flush();
 }
