@@ -33,7 +33,3 @@ if __name__ == "__main__":
     while True:
         ser.flush()
         recive_data(ser)
-
-
-#pag.move(-50,0)
-#pag.move(50,0)
